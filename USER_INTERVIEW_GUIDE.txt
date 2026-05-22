@@ -1,0 +1,171 @@
+================================================================================
+  USER INTERVIEW GUIDE — SpendLens / Credex Assignment
+  Prepared for: Round 1 Submission (Deadline: May 27, 2026)
+================================================================================
+
+PURPOSE
+-------
+You are NOT testing your app. You are doing problem discovery.
+Goal: Understand if people genuinely feel the pain of overspending on AI tools,
+how they currently think about it, and what would make them trust an audit tool.
+
+This shapes your audit logic, copy, and UX decisions.
+You MUST document what changed in your design because of each conversation.
+
+IMPORTANT: These interviews MUST be real. Fabricated interviews are an instant
+rejection. Three actual humans. No exceptions.
+
+
+WHO TO INTERVIEW
+----------------
+Target people who actually pay for AI tools at work or for a side project:
+
+  - Startup founders (solo or small team)
+  - Engineering managers at small companies
+  - Freelance developers with AI subscriptions
+  - Friends or seniors running side projects
+
+Where to find them:
+  - LinkedIn 1st-degree connections
+  - X/Twitter (cold DM)
+  - College alumni / WhatsApp groups
+  - Reddit: r/webdev, r/startups, r/SideProject
+  - IndieHackers community
+  - Discord dev servers
+
+TIP: Start with people you already know — a friend paying for ChatGPT Plus,
+a senior running a startup. Then branch out. Message 10 people so at least
+3 respond in time.
+
+
+SUGGESTED OUTREACH MESSAGE (LinkedIn / X DM)
+--------------------------------------------
+"Hey [Name], I'm building a free tool that audits AI tool spend for startups —
+helps founders see if they're overpaying on Cursor, Claude, ChatGPT, etc.
+Would you spare 10 minutes for a quick call this week? I'm just trying to
+understand the problem before I build. No sales pitch, just learning.
+Happy to share the tool with you when it's live."
+
+
+INTERVIEW SCRIPT (10–15 minutes)
+---------------------------------
+
+--- OPENING (2 min) ---
+
+"Thanks for chatting! I'm building a tool to help founders and devs understand
+if they're overspending on AI tools. I'd love to understand your experience —
+there are no right or wrong answers, I'm just trying to learn."
+
+[Ask if you can take notes or record — most people say yes]
+
+
+--- SECTION 1: CURRENT AI TOOL USAGE (3–4 min) ---
+
+1. "What AI tools or subscriptions are you currently paying for —
+   for work or personal projects?"
+
+2. "Roughly how much do you spend per month on them, across the team?"
+
+3. "How many people on your team use them?"
+
+4. "What's your main use case — coding, writing, research,
+   data analysis, or a mix?"
+
+
+--- SECTION 2: PAIN DISCOVERY (4–5 min) ---
+
+5. "Have you ever looked at your AI tool bills and felt like you might be
+   overpaying — or wondered if a cheaper option would work just as well?"
+
+6. "When you last renewed or signed up for a plan, how did you decide
+   which one to pick?"
+
+7. "Do you have any sense of what the 'right' amount to spend on AI tools
+   is for a team your size?"
+
+8. "Has anyone on your team ever switched AI tools to save money?
+   What happened?"
+
+
+--- SECTION 3: TOOL REACTION (2–3 min) ---
+
+9. "If you could get an instant report showing whether you're overpaying
+   on AI tools — with specific alternatives — would that be useful?
+   What would make you trust it?"
+
+10. "Would you share something like that with your team or on social media
+    if it showed you were overspending by $X/month?"
+
+11. "What would make you NOT use it — what would seem sketchy
+    or untrustworthy?"
+
+
+--- CLOSING (1 min) ---
+
+"Last question — is there anything about your AI tool spending that I
+haven't asked about that you think is important?"
+
+[Thank them. Offer to share the tool when it's live — most will say yes.]
+
+
+HOW TO TAKE NOTES DURING THE CALL
+-----------------------------------
+Don't try to write everything. Focus on capturing:
+  - Exact dollar amounts they mention
+  - Surprising or contradictory statements
+  - Moments where they push back or disagree
+  - Any specific tool names or pain points they bring up unprompted
+  - Their exact words (for quotes) — even rough paraphrases are fine
+
+
+WHAT TO DOCUMENT IN USER_INTERVIEWS.md
+-----------------------------------------
+Use this exact format for each interview:
+
+  ## Interview [N] — [Name or Initials], [Role], [Company Stage]
+
+  **Date:** YYYY-MM-DD
+  **Duration:** ~X minutes
+  **Channel:** WhatsApp call / LinkedIn call / In-person
+
+  ### Summary
+  [2–3 sentence overview of who they are and their AI tool situation]
+
+  ### 3+ Direct Quotes
+  - "..."
+  - "..."
+  - "..."
+
+  ### Most Surprising Thing They Said
+  [Something you didn't expect — a contradiction, weird behavior,
+  unexpected pain point]
+
+  ### What It Changed About Your Design
+  [A concrete design decision you made or reversed because of this conversation]
+
+
+WHAT MAKES A GOOD VS BAD INTERVIEW ENTRY
+------------------------------------------
+
+  GOOD (scores well):                      BAD (flagged as fake):
+  --------------------------------         --------------------------------
+  Specific dollar amounts mentioned        Vague "they spend a lot"
+  Surprising or contradictory statements   Generic "they found it useful"
+  A concrete design change you made        No mention of what changed
+  Quotes that sound like a real person     Polished, corporate-sounding quotes
+  Confusion, pushback, or disagreement     Everything was positive/validating
+
+
+TIMELINE REMINDER
+------------------
+  Today:       May 21 — Send outreach DMs NOW. Start interviews today if possible.
+  May 22–23:   Conduct remaining interviews.
+  May 24:      All 3 interviews done. Write up USER_INTERVIEWS.md.
+  May 27:      DEADLINE.
+
+  Don't leave interviews for the last day — you need scheduling time.
+
+
+================================================================================
+  END OF GUIDE
+================================================================================
