@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { auditRouter } from './routes/audit';
-import { summaryRouter } from './routes/summary';
+
 import { leadsRouter } from './routes/leads';
 
 dotenv.config();
@@ -21,7 +21,7 @@ app.get('/health', (_req, res) => {
 
 // Routes
 app.use('/api/audit', auditRouter);
-app.use('/api/summary', summaryRouter);
+
 app.use('/api/leads', leadsRouter);
 
 app.listen(PORT, () => {
