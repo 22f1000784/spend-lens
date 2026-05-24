@@ -118,7 +118,7 @@ Open [http://localhost:5173](http://localhost:5173)
 
 ## Running Tests
 ```bash
-cd client
+cd server
 npm run test
 ```
 
