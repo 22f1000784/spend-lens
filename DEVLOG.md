@@ -57,13 +57,45 @@ Each entry is git-verifiable — commits are referenced by hash.
 
 ## Day 3 — May 23, 2026
 
-_To be written after work is done._
+**Goal:** Write tests for audit engine, verify server stability
+
+**What I did:**
+- Set up Vitest in the server package with `vitest` ^4.1.7
+- Wrote 9 unit tests for the audit engine covering all rule branches:
+  - Plan right-sizing (Team plan overkill for ≤2 users, Claude Team→Pro downgrade)
+  - Alternative tool suggestions (Cursor→Windsurf, Copilot→Cursor Free)
+  - Annual savings calculation consistency
+  - "Spending well" path (zero savings for optimal setups)
+  - High-savings Credex CTA threshold ($500+/mo)
+  - API overspend detection (>$100/mo flagging)
+- Fixed unused `summaryRouter` import in server entry point
+- All 9 tests passing ✅
+
+**Decisions made:**
+- Vitest over Jest — native TypeScript support, faster execution, Vite-compatible
+- Test structure mirrors the audit engine's three rule categories for clarity
+
+**Blockers:** None. Need to do E2E testing tomorrow.
 
 ---
 
 ## Day 4 — May 24, 2026
 
-_To be written after work is done._
+**Goal:** Documentation, CI pipeline, project cleanup, user interviews
+
+**What I did:**
+- Removed Vite scaffold boilerplate files (main.ts, counter.ts, default SVG assets) — leftover from `create-vite` init
+- Created `ARCHITECTURE.md` — system diagram, request flows (audit creation, lead capture, shared audit retrieval), database schema, design rationale, security considerations
+- Added GitHub Actions CI workflow (`.github/workflows/test.yml`) — runs server unit tests + client type checking on push/PR to main
+- Updated DEVLOG with Day 3 and Day 4 entries
+- Fixed README test instructions (tests are in server, not client)
+- Conducted user interviews (see USER_INTERVIEWS.md)
+
+**Decisions made:**
+- CI runs two jobs: server tests + client `tsc --noEmit` type check (no client tests yet, but type safety is verified)
+- Architecture doc uses ASCII art diagrams instead of images — renders on GitHub without extra tooling
+
+**Tomorrow (Day 5):** E2E manual testing, fix any bugs found, polish UI transitions
 
 ---
 
