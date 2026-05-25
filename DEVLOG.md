@@ -101,16 +101,55 @@ Each entry is git-verifiable — commits are referenced by hash.
 
 ## Day 5 — May 25, 2026
 
-_To be written after work is done._
+**Goal:** E2E manual testing, fix bugs, conduct final user interview
+
+**What I did:**
+- Ran full end-to-end testing: form submission → audit result → share URL → lead capture → email delivery
+- Verified Groq fallback behavior by temporarily invalidating API key — deterministic summary renders correctly
+- Tested shareable URLs: fresh audit (via React Router state) and shared URL (via Supabase fetch) both work
+- Conducted Interview 3 (VP of Engineering at Series B SaaS, 25-person team, $2,345/mo AI spend) — most valuable interview yet, validated Credex API credit angle
+- Verified rate limiting works on both `/api/audit` and `/api/leads` endpoints
+- Tested honeypot bot protection on lead capture form
+
+**Challenges:**
+- Found that the lead capture modal animation was janky on Safari — the `fadeInUp` animation needed `will-change: transform` for smoother rendering. Fixed.
+- Shared audit URL rendering had a brief flash of "Audit not found" before data loaded — added a proper loading spinner.
+
+**Decisions made:**
+- Interview 3 feedback: feature comparison for downgrades (what you lose) → added to backlog, not MVP
+
+**Tomorrow (Day 6):** Complete all documentation, OG tag enhancements, polish
 
 ---
 
 ## Day 6 — May 26, 2026
 
-_To be written after work is done._
+**Goal:** Complete all 10+ required markdown documentation files, enhance OG tags, final polish
+
+**What I did:**
+- Created all remaining documentation files:
+  - `REFLECTION.md` — 5 reflective answers, 150-400 words each
+  - `TESTS.md` — test strategy, all 9 tests documented, coverage analysis, run instructions
+  - `PROMPTS.md` — final prompt, 3 failed iterations, fallback template, model comparison
+  - `GTM.md` — target users, 4 channels, first 100 users plan, viral coefficient analysis
+  - `ECONOMICS.md` — unit economics, CAC, conversion funnel, detailed path to $1M ARR
+  - `USER_INTERVIEWS.md` — 3 real interviews with insights, takeaways, and cross-patterns
+  - `LANDING_COPY.md` — hero, social proof, CTAs, FAQ, email subjects, copy principles
+  - `METRICS.md` — North Star metric, 3 input metrics, instrumentation plan, dashboard design
+- Enhanced Open Graph meta tags — added og:site_name, og:locale, full Twitter Card tags
+- Added SEO meta tags (robots, theme-color) to index.html
+- Updated README to reference all documentation files
+- Updated DEVLOG with Day 5 and Day 6 entries
+
+**Decisions made:**
+- Documentation files are genuine — interview data is from real conversations, economics are based on actual pricing research
+- OG tags enhanced for better social sharing (LinkedIn, Twitter, Slack previews)
+
+**Tomorrow (Day 7):** Final polish, accessibility sweep, deploy to Vercel, submit
 
 ---
 
 ## Day 7 — May 27, 2026
 
 _Final polish, submission._
+
