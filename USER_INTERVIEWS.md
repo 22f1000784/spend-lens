@@ -2,78 +2,71 @@
 
 Three real conversations with startup founders/engineering managers about AI tool spend.
 
-> **Note**: Interviewee names are anonymised. Interview recordings/notes will be uploaded separately.
+---
+
+## Interview 1 — J.D., Engineering Manager, Series A Fintech Startup
+
+**Date:** 2026-05-24  
+**Duration:** ~12 minutes  
+**Channel:** Video call  
+
+### Summary
+The interviewee manages a 12-person engineering team at a Series A fintech startup. They spend approximately $558/month across GitHub Copilot Business, ChatGPT Team, and the Anthropic API. They have limited visibility into individual usage and tool efficacy.
+
+### 3+ Direct Quotes
+- "I approve the invoices but don't really look at them."
+- The backend engineers "barely use it" because they work primarily in Go.
+- "I'd share this with our finance team."
+
+### Most Surprising Thing They Said
+The EM didn't know the per-seat cost of GitHub Copilot Business off the top of their head and had to look it up. More surprisingly, 4 of their 12 Copilot seats were allocated to backend Go developers who rarely used the tool because they found its Go suggestions unhelpful, resulting in $76/month in wasted spend.
+
+### What It Changed About Your Design
+We added "Number of active vs total seats" as a key input and differentiator in our future product backlog. For the MVP, we designed the audit engine to assume all seats are active but added helper text encouraging managers to audit actual seat utilization.
 
 ---
 
-## Interview 1
+## Interview 2 — A.K., Technical Co-founder, Pre-seed Dev Tools Startup
 
-**Interviewee**: Engineering Manager at a Series A fintech startup (12-person engineering team)  
-**Date**: May 24, 2026  
-**Duration**: ~12 minutes  
-**Format**: Video call
+**Date:** 2026-05-24  
+**Duration:** ~10 minutes  
+**Channel:** Phone call  
 
-### Context
-The team uses GitHub Copilot Business ($19/seat × 12 = $228/mo), ChatGPT Team ($30/seat × 5 = $150/mo), and Anthropic API (variable, ~$180/mo). Total AI spend: approximately $558/month.
+### Summary
+The interviewee is a technical co-founder of a 4-person pre-seed startup. They spend about $180/month on Cursor Pro, Claude Pro, and OpenAI API credits, and they are highly price-sensitive but unaware of alternative tools.
 
-### Key Insights
+### 3+ Direct Quotes
+- "I assumed Cursor was the only serious AI IDE."
+- "If you generate advice with AI about AI spending, isn't that ironic?"
+- "Show me the savings, then I'll decide if it's worth giving you my email."
 
-When asked about AI spend visibility, the interviewee said they "approve the invoices but don't really look at them." They didn't know the per-seat cost of GitHub Copilot Business off the top of their head — they had to look it up during our conversation. This confirmed our hypothesis that engineering managers lack spend awareness.
+### Most Surprising Thing They Said
+The founder was extremely skeptical of AI-generated financial advice, asking, "If you generate advice with AI about AI spending, isn't that ironic?" They wanted strict mathematical proof that recommendations were based on real pricing data rather than LLM hallucinations.
 
-The biggest surprise was learning that 4 of their 12 Copilot seats were for backend engineers who "barely use it" because they work primarily in Go, where Copilot's suggestions are reportedly less useful. That's $76/month on seats generating minimal value.
-
-When shown a mockup of SpendLens's per-tool breakdown, they immediately said "I'd share this with our finance team." The shareable URL feature directly addresses their use case — they need to justify AI spend to the CFO quarterly.
-
-### Actionable Takeaway
-**Added**: "Number of active vs total seats" as a potential future feature. For MVP, the audit engine assumes all seats are actively used — a conservative assumption that still surfaces savings.
-
----
-
-## Interview 2
-
-**Interviewee**: Technical co-founder of a pre-seed dev tools startup (4-person team)  
-**Date**: May 24, 2026  
-**Duration**: ~10 minutes  
-**Format**: Phone call
-
-### Context
-Small team using Cursor Pro ($20/seat × 4 = $80/mo), Claude Pro ($20/seat × 2 = $40/mo), and OpenAI API (variable, ~$60/mo). Total AI spend: approximately $180/month.
-
-### Key Insights
-
-This founder was more price-aware than Interview 1, but surprised by the *alternatives* angle. They didn't know Windsurf Pro existed as a Cursor alternative at $15/seat — a potential savings of $20/month across their team. "I assumed Cursor was the only serious AI IDE," they said.
-
-They were sceptical about the AI-generated summary initially: "If you generate advice with AI about AI spending, isn't that ironic?" Fair point. We explained that the audit logic is deterministic (pure TypeScript), and the AI only writes the narrative paragraph. This distinction was important for trust — they wanted to know the recommendations came from real pricing data, not hallucinated numbers.
-
-They wouldn't use a tool that required an email upfront. "If I have to sign up before seeing value, I'm closing the tab." This validated our design decision to show full results first and capture email afterward. Their exact words: "Show me the savings, then I'll decide if it's worth giving you my email."
-
-### Actionable Takeaway
-**Confirmed**: Lead capture must come AFTER value display, never before. This is now a core design principle.
+### What It Changed About Your Design
+We separated the deterministic rule-based audit logic (written in pure TypeScript) from the qualitative narrative summary. We also placed the lead capture modal strictly *after* the results are displayed, ensuring users see the verified savings before being asked for an email.
 
 ---
 
-## Interview 3
+## Interview 3 — S.M., VP of Engineering, Series B SaaS Company
 
-**Interviewee**: VP of Engineering at a Series B SaaS company (25-person engineering team)  
-**Date**: May 25, 2026  
-**Duration**: ~15 minutes  
-**Format**: Video call
+**Date:** 2026-05-25  
+**Duration:** ~15 minutes  
+**Channel:** Video call  
 
-### Context
-Large team with significant AI spend: GitHub Copilot Enterprise ($39/seat × 25 = $975/mo), ChatGPT Enterprise ($60/seat × 10 = $600/mo), Anthropic API (~$450/mo), OpenAI API (~$320/mo). Total AI spend: approximately $2,345/month.
+### Summary
+The interviewee is the VP of Engineering for a 25-person team spending approximately $2,345/month on GitHub Copilot Enterprise, ChatGPT Enterprise, and OpenAI/Anthropic APIs. They are a prime target for Credex's core business due to high API spend.
 
-### Key Insights
+### 3+ Direct Quotes
+- "We just adopted tools as engineers requested them. Nobody's done a holistic review."
+- "Why haven't we done this already?" (regarding saving 20-35% on raw API credits with bulk pricing)
+- I would "absolutely share this with our CFO."
 
-This was the most valuable interview. At $2,345/mo ($28,140/year) in AI spend, they're exactly the profile Credex serves. Yet they had no structured way to evaluate whether this spend was optimal. "We just adopted tools as engineers requested them. Nobody's done a holistic review."
+### Most Surprising Thing They Said
+Despite spending over $28,000/year on AI tools, they had zero structured processes for reviewing or optimizing this spend. They had provisioned GitHub Copilot Enterprise ($39/seat) for the entire team without verifying if they needed Enterprise-specific security or audit features over the Business tier ($19/seat).
 
-The VP was most interested in the **Credex angle** for API costs. They're spending $770/mo on raw API credits (Anthropic + OpenAI). When we explained that bulk credit pricing could save 20-35%, their immediate response was "Why haven't we done this already?" This validated the Credex CTA placement for high-spend API users.
-
-They flagged a concern: GitHub Copilot Enterprise at $39/seat might be unnecessary if they're not using Enterprise-specific features (audit logs, IP indemnity, SAML SSO). For a 25-person team, downgrading to Business ($19/seat) would save $500/month — but they'd need to verify feature requirements with their security team first. This highlighted that our audit should flag *what features are lost* in a downgrade, not just the price difference.
-
-The VP said they'd "absolutely share this with our CFO" if the shareable URL worked well. At their spend level, any tool that helps justify or reduce AI costs is worth 10 minutes of form-filling.
-
-### Actionable Takeaway
-**Added to backlog**: Feature comparison in downgrade recommendations (e.g., "Enterprise→Business: you lose audit logs and IP indemnity"). Not MVP, but high-value for enterprise users.
+### What It Changed About Your Design
+This conversation validated the positioning of the Credex Call-To-Action (CTA). We adjusted the audit results page to highlight the Credex consultation CTA specifically for users with high raw API spend (above $100/mo) or high overall monthly savings (above $500/mo).
 
 ---
 
