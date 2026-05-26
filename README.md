@@ -58,61 +58,49 @@ spend-lens/
 │   │   ├── routes/
 │   │   │   ├── audit.ts       # POST /api/audit
 │   │   │   └── leads.ts       # POST /api/leads
-│   │   └── lib/
-│   │       ├── auditEngine.ts # Core audit logic (pure TS)
-│   │       ├── groq.ts        # Groq AI wrapper + fallback
-│   │       ├── supabase.ts    # Supabase client
-│   │       └── resend.ts      # Email sender
+│   │   ├── lib/
+│   │   │   ├── auditEngine.ts # Core audit logic (pure TS)
+│   │   │   ├── groq.ts        # Groq AI wrapper + fallback
+│   │   │   ├── supabase.ts    # Supabase client
+│   │   │   └── resend.ts      # Email sender
+│   │   └── __tests__/
+│   │       └── auditEngine.test.ts # 9 Vitest unit tests
 │   └── tsconfig.json
 │
+├── .github/workflows/test.yml # CI: tests + type checking
 ├── README.md
-├── DEVLOG.md
 ├── ARCHITECTURE.md
+├── DEVLOG.md
+├── REFLECTION.md
+├── TESTS.md
+├── PRICING_DATA.md
+├── PROMPTS.md
+├── GTM.md
+├── ECONOMICS.md
+├── USER_INTERVIEWS.md
+├── LANDING_COPY.md
+├── METRICS.md
 └── .gitignore
 ```
 
 ---
 
-## Quick Start (Local Development)
+## Documentation
 
-### Prerequisites
-- Node.js 18+
-- npm 9+
-
-### 1. Clone & install
-```bash
-git clone https://github.com/22f1000784/spend-lens.git
-cd spend-lens
-
-# Install client deps
-cd client && npm install && cd ..
-
-# Install server deps
-cd server && npm install && cd ..
-```
-
-### 2. Set up environment variables
-```bash
-cp server/.env.example server/.env
-# Edit server/.env with your API keys:
-# - SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY
-# - GROQ_API_KEY
-# - RESEND_API_KEY
-```
-
-### 3. Run the database schema
-In Supabase SQL Editor, run the contents of `supabase_schema.sql`.
-
-### 4. Start development servers
-```bash
-# Terminal 1 — Backend
-cd server && npm run dev
-
-# Terminal 2 — Frontend
-cd client && npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173)
+| File | Description |
+|---|---|
+| [`README.md`](README.md) | Project overview, setup, tech stack |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | System diagram, request flows, design decisions |
+| [`DEVLOG.md`](DEVLOG.md) | Daily development log (7 entries, git-verifiable) |
+| [`REFLECTION.md`](REFLECTION.md) | 5 reflective answers on process and decisions |
+| [`TESTS.md`](TESTS.md) | Test strategy, 9 tests listed, coverage analysis |
+| [`PRICING_DATA.md`](PRICING_DATA.md) | All pricing traced to official source URLs |
+| [`PROMPTS.md`](PROMPTS.md) | LLM prompts, iterations, failed attempts |
+| [`GTM.md`](GTM.md) | Go-to-market: target users, channels, 100-user plan |
+| [`ECONOMICS.md`](ECONOMICS.md) | Unit economics, CAC, $1M ARR path |
+| [`USER_INTERVIEWS.md`](USER_INTERVIEWS.md) | 3 real user interviews with insights |
+| [`LANDING_COPY.md`](LANDING_COPY.md) | Hero, CTAs, FAQ, email copy |
+| [`METRICS.md`](METRICS.md) | North Star, input metrics, instrumentation plan |
 
 ---
 
@@ -137,3 +125,4 @@ npm run test
 ## License
 
 MIT — Built for the Credex Web Dev Internship Assignment, May 2026.
+
