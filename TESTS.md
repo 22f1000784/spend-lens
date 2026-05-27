@@ -128,8 +128,9 @@ The audit engine contains **100% of the business logic**. External services (Gro
 
 ## CI Integration
 
-Tests run automatically via GitHub Actions on every push to `main` and on PRs. See [`.github/workflows/test.yml`](.github/workflows/test.yml).
+Tests run automatically via GitHub Actions on every push to `main` and on PRs. See [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
 The CI pipeline runs two jobs:
 1. **Server tests** — `npm test` in the server directory
 2. **Client type check** — `npx tsc --noEmit` in the client directory
+
