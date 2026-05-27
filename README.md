@@ -6,7 +6,10 @@ A free web app that helps startup founders and engineering managers audit their 
 
 **Think:** *"Mint for AI tools"* — enter what you pay, get an instant breakdown of waste and savings.
 
-🔗 **Live Demo:** [Deploy to Vercel (client)](https://vercel.com/new) + [Deploy to Render (server)](https://render.com/deploy) — See deployment section below
+🔗 **Live Demo:** [https://client-tau-pink.vercel.app](https://client-tau-pink.vercel.app)
+
+> [!NOTE]
+> **Render Free Tier Boot Delay:** The Express backend is hosted on Render's free plan. If the app has not been used recently, the backend server will be in a "sleep" state. **Please allow 15–30 seconds for the initial audit request to process** while the container wakes up. Subsequent requests will load instantly.
 
 ---
 
@@ -67,7 +70,7 @@ spend-lens/
 │   │       └── auditEngine.test.ts # 9 Vitest unit tests
 │   └── tsconfig.json
 │
-├── .github/workflows/test.yml # CI: tests + type checking
+├── .github/workflows/ci.yml   # CI: tests + type checking
 ├── README.md
 ├── ARCHITECTURE.md
 ├── DEVLOG.md
