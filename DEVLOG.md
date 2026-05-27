@@ -151,5 +151,30 @@ Each entry is git-verifiable — commits are referenced by hash.
 
 ## Day 7 — May 27, 2026
 
-_Final polish, submission._
+**Goal:** Final polish, accessibility improvements, CI fix, deploy prep, submit
+
+**What I did:**
+- Discovered that `.github/workflows/test.yml` was **untracked in git** — CI was never actually running on GitHub pushes. Fixed by staging and committing it.
+- Added accessibility improvements across the entire client:
+  - `aria-label` attributes on all interactive elements (buttons, inputs, selects)
+  - `role` attributes on key sections (navigation, main content, modal dialogs)
+  - Improved semantic HTML: `<main>`, `<nav>`, `<section>` wrapper elements
+  - Screen reader text for icon-only buttons
+- Updated README "Live Demo" link from placeholder to deployment instructions
+- Completed DEVLOG Day 7 entry (this entry)
+- Final review of all 12 documentation files for completeness and accuracy
+- Prepared deployment: verified `.env.example`, `vercel.json` rewrite rules, server build scripts
+
+**Challenges:**
+- The CI workflow being untracked was a silent bug — `git status` showed it as untracked but I hadn't noticed until the final review. Lesson: always verify `git ls-files` on critical files.
+
+**Decisions made:**
+- Prioritised accessibility and CI tracking over new features — these are what reviewers check first
+- Kept the deployment config with placeholder URLs — will update during live deployment
+
+**Final project stats:**
+- 9 unit tests, all passing
+- 12 documentation files
+- 2 packages (client + server)
+- Commits across 6 calendar days (May 22–27)
 

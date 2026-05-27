@@ -85,7 +85,7 @@ export default function Home() {
   const totalSpend = formState.tools.reduce((sum, t) => sum + t.monthlySpend, 0)
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--color-bg)' }}>
+    <main role="main" aria-label="SpendLens AI Spend Audit" style={{ minHeight: '100vh', background: 'var(--color-bg)' }}>
       {/* Background orbs */}
       <div style={{
         position: 'fixed', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0
@@ -106,7 +106,7 @@ export default function Home() {
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: '860px', margin: '0 auto', padding: '40px 24px 80px' }}>
         {/* Header */}
-        <header style={{ textAlign: 'center', marginBottom: '56px' }}>
+        <header role="banner" style={{ textAlign: 'center', marginBottom: '56px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
             <span style={{ fontSize: '32px' }}>🔍</span>
             <span style={{ fontSize: '22px', fontWeight: 700, color: 'var(--color-brand-light)' }}>SpendLens</span>
@@ -182,6 +182,7 @@ export default function Home() {
           {/* Submit button */}
           <button
             id="run-audit-btn"
+            aria-label="Run free AI spend audit"
             onClick={handleSubmit}
             disabled={loading || formState.tools.length === 0 || totalSpend === 0}
             style={{
@@ -248,6 +249,6 @@ export default function Home() {
           to { transform: rotate(360deg); }
         }
       `}</style>
-    </div>
+    </main>
   )
 }

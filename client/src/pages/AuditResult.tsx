@@ -108,7 +108,7 @@ export default function AuditResult() {
   const hasNoSavings = data.totalMonthlySavings === 0
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--color-bg)' }}>
+    <main role="main" aria-label="Audit Results" style={{ minHeight: '100vh', background: 'var(--color-bg)' }}>
       {/* Background */}
       <div style={{ position: 'fixed', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
         <div style={{
@@ -121,13 +121,14 @@ export default function AuditResult() {
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto', padding: '40px 24px 80px' }}>
         {/* Nav */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+        <nav role="navigation" aria-label="Audit navigation" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
             <span style={{ fontSize: '20px' }}>🔍</span>
             <span style={{ fontSize: '16px', fontWeight: 700, color: 'var(--color-brand-light)' }}>SpendLens</span>
           </Link>
           <button
             id="share-btn"
+            aria-label={copied ? 'Link copied to clipboard' : 'Share audit results'}
             onClick={handleCopy}
             style={{
               padding: '10px 20px',
@@ -141,7 +142,7 @@ export default function AuditResult() {
           >
             {copied ? '✓ Copied!' : '🔗 Share Audit'}
           </button>
-        </div>
+        </nav>
 
         {/* Hero savings */}
         <div className="glass-card animate-fade-in-up" style={{
@@ -327,6 +328,6 @@ export default function AuditResult() {
       )}
 
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-    </div>
+    </main>
   )
 }

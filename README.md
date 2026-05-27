@@ -6,7 +6,7 @@ A free web app that helps startup founders and engineering managers audit their 
 
 **Think:** *"Mint for AI tools"* — enter what you pay, get an instant breakdown of waste and savings.
 
-🔗 **Live Demo:** _Coming soon (deploying May 26)_
+🔗 **Live Demo:** [Deploy to Vercel (client)](https://vercel.com/new) + [Deploy to Render (server)](https://render.com/deploy) — See deployment section below
 
 ---
 
@@ -119,6 +119,45 @@ npm run test
 3. **Audit engine is pure TypeScript** — No AI in the core logic; deterministic, testable, fast
 4. **Lead capture shown after value** — Email modal appears 2 seconds after results load, never before
 5. **Honeypot bot protection** — Hidden `website` field in lead form catches bot submissions
+
+---
+
+## Quick Start
+
+```bash
+# Clone the repo
+git clone https://github.com/22f1000784/spend-lens.git
+cd spend-lens
+
+# Server
+cd server
+cp .env.example .env   # fill in your API keys
+npm install
+npm run dev             # runs on http://localhost:3001
+
+# Client (in a new terminal)
+cd client
+npm install
+npm run dev             # runs on http://localhost:5173
+```
+
+---
+
+## Deployment
+
+### Server → Render
+1. Create a new **Web Service** on [Render](https://render.com)
+2. Connect your GitHub repo, set root directory to `server`
+3. Build command: `npm install && npm run build`
+4. Start command: `npm start`
+5. Add environment variables from `.env.example`
+
+### Client → Vercel
+1. Import project on [Vercel](https://vercel.com/new)
+2. Set root directory to `client`
+3. Framework preset: **Vite**
+4. Update `client/vercel.json` with your Render backend URL
+5. Deploy
 
 ---
 

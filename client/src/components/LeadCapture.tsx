@@ -43,7 +43,7 @@ export default function LeadCapture({ auditId, monthlySavings, onSubmit, onDismi
   }
 
   return (
-    <div style={{
+    <div role="dialog" aria-modal="true" aria-label="Get your full audit report" style={{
       position: 'fixed', inset: 0,
       background: 'rgba(0,0,0,0.7)',
       backdropFilter: 'blur(6px)',
@@ -61,6 +61,7 @@ export default function LeadCapture({ auditId, monthlySavings, onSubmit, onDismi
         position: 'relative',
       }}>
         <button
+          aria-label="Close dialog"
           onClick={onDismiss}
           style={{
             position: 'absolute', top: '16px', right: '16px',
