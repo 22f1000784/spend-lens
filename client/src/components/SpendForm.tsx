@@ -15,12 +15,6 @@ const USE_CASES = [
   { id: 'mixed', label: '🔀 Mixed / General' },
 ]
 
-const TOOL_ACTION_LABELS: Record<string, { color: string; label: string }> = {
-  keep: { color: '#10b981', label: '✓ Optimised' },
-  downgrade: { color: '#f59e0b', label: '↓ Downgrade' },
-  switch: { color: '#a78bfa', label: '⇄ Switch' },
-  cancel: { color: '#ef4444', label: '✕ Cancel' },
-}
 
 export default function SpendForm({ formState, onChange }: Props) {
   const [showAddTool, setShowAddTool] = useState(false)
