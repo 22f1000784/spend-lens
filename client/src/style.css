@@ -125,3 +125,72 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* Hide number input spinners globally */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Responsive Team Profile Grid */
+.team-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .team-profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive Tool Grid Row */
+.tool-grid-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 80px 100px 36px;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .tool-grid-row {
+    grid-template-columns: 1fr 1.2fr 36px;
+    grid-template-rows: auto auto;
+    gap: 8px;
+  }
+  .tool-grid-select-tool {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .tool-grid-select-plan {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .tool-grid-btn-remove {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .tool-grid-input-seats {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .tool-grid-spend-container {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+  }
+}
+
+/* Responsive padding for main form card */
+.main-form-card {
+  padding: 40px;
+}
+@media (max-width: 640px) {
+  .main-form-card {
+    padding: 20px !important;
+  }
+}

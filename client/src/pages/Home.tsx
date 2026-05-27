@@ -135,7 +135,7 @@ export default function Home() {
         </header>
 
         {/* Main form card */}
-        <div className="glass-card glow" style={{ padding: '40px' }}>
+        <div className="glass-card glow main-form-card">
           <SpendForm
             formState={formState}
             onChange={setFormState}

@@ -73,7 +73,7 @@ export default function SpendForm({ formState, onChange }: Props) {
         <h2 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '20px' }}>
           1 — Team Profile
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+        <div className="team-profile-grid">
           <div>
             <label style={{ display: 'block', fontSize: '13px', color: 'var(--color-text-muted)', marginBottom: '6px' }}>
               Team Size (people)
@@ -120,9 +120,10 @@ export default function SpendForm({ formState, onChange }: Props) {
                 borderRadius: '12px',
                 padding: '16px 20px',
               }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1.5fr 80px 100px 36px', gap: '10px', alignItems: 'center' }}>
+                <div className="tool-grid-row">
                   {/* Tool selector */}
                   <select
+                    className="tool-grid-select-tool"
                     value={entry.tool}
                     onChange={e => updateTool(index, 'tool', e.target.value)}
                   >
@@ -133,6 +134,7 @@ export default function SpendForm({ formState, onChange }: Props) {
 
                   {/* Plan selector */}
                   <select
+                    className="tool-grid-select-plan"
                     value={entry.plan}
                     onChange={e => updateTool(index, 'plan', e.target.value)}
                   >
@@ -143,6 +145,7 @@ export default function SpendForm({ formState, onChange }: Props) {
 
                   {/* Seats */}
                   <input
+                    className="tool-grid-input-seats"
                     type="number"
                     min={1}
                     max={500}
@@ -153,7 +156,7 @@ export default function SpendForm({ formState, onChange }: Props) {
                   />
 
                   {/* Monthly spend */}
-                  <div style={{ position: 'relative' }}>
+                  <div className="tool-grid-spend-container" style={{ position: 'relative' }}>
                     <span style={{
                       position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)',
                       color: 'var(--color-text-muted)', fontSize: '14px',
@@ -171,6 +174,7 @@ export default function SpendForm({ formState, onChange }: Props) {
 
                   {/* Remove */}
                   <button
+                    className="tool-grid-btn-remove"
                     onClick={() => removeTool(index)}
                     title="Remove tool"
                     style={{
