@@ -5,10 +5,8 @@ Each entry is git-verifiable — commits are referenced by hash.
 
 ---
 
-## Day 1 — May 21, 2026
-
-**Goal:** Problem discovery, API setup, tech stack decisions
-
+## Day 1 — 2026-05-21
+**Hours worked:** 4
 **What I did:**
 - Read the Credex assignment brief in full. Identified the core value proposition: founders don't know if they're overpaying on AI tools.
 - Decided on the name "SpendLens" — like a lens that focuses on spend clarity.
@@ -17,164 +15,107 @@ Each entry is git-verifiable — commits are referenced by hash.
 - Set up Resend for transactional email.
 - Tested all API connections with standalone Python scripts — Groq ✅, Supabase ✅, Resend ✅.
 - Wrote User Interview Guide — need to conduct 3 real interviews by May 24.
-
-**Decisions made:**
-- Groq instead of Anthropic (faster setup, same quality output for this use case)
-- Supabase over Firebase (better PostgreSQL support, RLS policies, free tier generous)
-- React + Vite + TypeScript over Next.js (simpler deployment separation — no SSR needed here)
-
-**Blockers:** None. APIs all working.
+**What I learned:**
+- Switched to Groq due to Anthropic API access setup issues, which works similarly for summaries.
+- Deciding on a database model early simplifies full-stack development.
+**Blockers / what I'm stuck on:** None.
+**Plan for tomorrow:** Scaffold the React + Vite client and the Express server, write core audit engine.
 
 ---
 
-## Day 2 — May 22, 2026
-
-**Goal:** Full project scaffold, audit engine, core UI
-
+## Day 2 — 2026-05-22
+**Hours worked:** 6
 **What I did:**
-- Scaffolded React + Vite + TypeScript client with Tailwind CSS v4
-- Set up Express + TypeScript server with all routes: `/api/audit`, `/api/leads`
-- Built the core **audit engine** (`server/src/lib/auditEngine.ts`) — pure TypeScript, no AI, deterministic rules:
-  - Plan right-sizing: flags Team plans for ≤2 users
-  - Alternative tool suggestions by use case
-  - API overspend detection (flags for Credex credits)
-- Built **Groq wrapper** with graceful fallback — if API fails, uses template summary
-- Built **Resend email** with dark-themed HTML template, Credex CTA for high-savings users
-- Built the full **React frontend**:
-  - Home page with hero, spend form (8 tools, plan/seat/spend inputs)
-  - Audit result page with savings hero, per-tool breakdown, AI summary, share button
-  - Lead capture modal (appears 2 seconds after results, honeypot bot protection)
-  - localStorage persistence across page reloads
-- Connected to GitHub, made first commits
-
-**Challenges:**
-- Vite scaffold didn't include React by default — had to add `@vitejs/plugin-react` and React packages manually
-- Tailwind v4 uses `@import "tailwindcss"` not `@tailwind base` — updated style.css accordingly
-
-**Tomorrow (Day 3):** Write Vitest tests for audit engine, add tsconfig fixes, test full flow end-to-end
+- Scaffolded React + Vite + TypeScript client with Tailwind CSS v4.
+- Set up Express + TypeScript server with all routes: `/api/audit`, `/api/leads`.
+- Built the core **audit engine** (`server/src/lib/auditEngine.ts`) — pure TypeScript, no AI, deterministic rules (plan right-sizing, alternative suggestions, API overspend credits).
+- Built **Groq wrapper** with graceful fallback — if API fails, uses template summary.
+- Built **Resend email** with dark-themed HTML template, Credex CTA for high-savings users.
+- Built the full **React frontend** (Home page, AuditResult page, Lead capture modal with honeypot bot protection, localStorage state persistence).
+- Connected to GitHub, made first commits.
+**What I learned:**
+- Tailwind v4 uses `@import "tailwindcss"` in CSS, which differs from older versions.
+- Vite project templates sometimes require manual setup of React plugin configurations depending on the options selected.
+**Blockers / what I'm stuck on:** None.
+**Plan for tomorrow:** Write Vitest unit tests for the audit engine to verify accuracy.
 
 ---
 
-## Day 3 — May 23, 2026
-
-**Goal:** Write tests for audit engine, verify server stability
-
+## Day 3 — 2026-05-23
+**Hours worked:** 3
 **What I did:**
-- Set up Vitest in the server package with `vitest` ^4.1.7
-- Wrote 9 unit tests for the audit engine covering all rule branches:
-  - Plan right-sizing (Team plan overkill for ≤2 users, Claude Team→Pro downgrade)
-  - Alternative tool suggestions (Cursor→Windsurf, Copilot→Cursor Free)
-  - Annual savings calculation consistency
-  - "Spending well" path (zero savings for optimal setups)
-  - High-savings Credex CTA threshold ($500+/mo)
-  - API overspend detection (>$100/mo flagging)
-- Fixed unused `summaryRouter` import in server entry point
-- All 9 tests passing ✅
-
-**Decisions made:**
-- Vitest over Jest — native TypeScript support, faster execution, Vite-compatible
-- Test structure mirrors the audit engine's three rule categories for clarity
-
-**Blockers:** None. Need to do E2E testing tomorrow.
+- Set up Vitest in the server package with `vitest` ^4.1.7.
+- Wrote 9 unit tests for the audit engine covering all rule branches: plan right-sizing, alternative tools, annual savings calculations, optimal configuration path, high savings threshold ($500+/mo), API overspend detection (>$100/mo).
+- Fixed unused `summaryRouter` import in server entry point.
+- Ran all 9 tests and verified they are passing.
+**What I learned:**
+- Vitest provides native TypeScript support and is extremely fast compared to Jest.
+- Structuring tests alongside rule classifications ensures the audit logic is easily reviewable.
+**Blockers / what I'm stuck on:** None.
+**Plan for tomorrow:** Remove boilerplate code, compile documentation files, and conduct user interviews.
 
 ---
 
-## Day 4 — May 24, 2026
-
-**Goal:** Documentation, CI pipeline, project cleanup, user interviews
-
+## Day 4 — 2026-05-24
+**Hours worked:** 5
 **What I did:**
-- Removed Vite scaffold boilerplate files (main.ts, counter.ts, default SVG assets) — leftover from `create-vite` init
-- Created `ARCHITECTURE.md` — system diagram, request flows (audit creation, lead capture, shared audit retrieval), database schema, design rationale, security considerations
-- Added GitHub Actions CI workflow (`.github/workflows/test.yml`) — runs server unit tests + client type checking on push/PR to main
-- Updated DEVLOG with Day 3 and Day 4 entries
-- Fixed README test instructions (tests are in server, not client)
-- Conducted user interviews (see USER_INTERVIEWS.md)
-
-**Decisions made:**
-- CI runs two jobs: server tests + client `tsc --noEmit` type check (no client tests yet, but type safety is verified)
-- Architecture doc uses ASCII art diagrams instead of images — renders on GitHub without extra tooling
-
-**Tomorrow (Day 5):** E2E manual testing, fix any bugs found, polish UI transitions
+- Removed Vite scaffold boilerplate files (main.ts, counter.ts, default SVG assets).
+- Created `ARCHITECTURE.md` explaining data flow, database schema, design rationale.
+- Added GitHub Actions workflow (`.github/workflows/test.yml`) to typecheck client and run server tests.
+- Fixed README test instructions.
+- Conducted the first two user interviews (documented in `USER_INTERVIEWS.md`).
+**What I learned:**
+- Users generally have clear feedback about feature downgrades, stating that understanding what feature they'll lose is as important as the savings amount.
+- Untracked files in Git can go unnoticed if not explicitly checked with `git status` or `git ls-files`.
+**Blockers / what I'm stuck on:** None.
+**Plan for tomorrow:** Run end-to-end integration tests, fix UI transitions, and conduct the final user interview.
 
 ---
 
-## Day 5 — May 25, 2026
-
-**Goal:** E2E manual testing, fix bugs, conduct final user interview
-
+## Day 5 — 2026-05-25
+**Hours worked:** 4
 **What I did:**
-- Ran full end-to-end testing: form submission → audit result → share URL → lead capture → email delivery
-- Verified Groq fallback behavior by temporarily invalidating API key — deterministic summary renders correctly
-- Tested shareable URLs: fresh audit (via React Router state) and shared URL (via Supabase fetch) both work
-- Conducted Interview 3 (VP of Engineering at Series B SaaS, 25-person team, $2,345/mo AI spend) — most valuable interview yet, validated Credex API credit angle
-- Verified rate limiting works on both `/api/audit` and `/api/leads` endpoints
-- Tested honeypot bot protection on lead capture form
-
-**Challenges:**
-- Found that the lead capture modal animation was janky on Safari — the `fadeInUp` animation needed `will-change: transform` for smoother rendering. Fixed.
-- Shared audit URL rendering had a brief flash of "Audit not found" before data loaded — added a proper loading spinner.
-
-**Decisions made:**
-- Interview 3 feedback: feature comparison for downgrades (what you lose) → added to backlog, not MVP
-
-**Tomorrow (Day 6):** Complete all documentation, OG tag enhancements, polish
+- Ran full end-to-end testing: form submission → audit result → share URL → lead capture → email delivery.
+- Verified Groq API fallback behavior.
+- Tested shareable URLs.
+- Conducted the third user interview (VP of Engineering at Series B SaaS) which validated the Credex API credits value proposition.
+- Verified API rate limiting and form honeypot protections.
+- Fixed Safari modal transition animation jank by adding `will-change: transform`.
+- Added loading spinner to shared audit page to prevent "Audit not found" flash.
+**What I learned:**
+- Safari has specific rendering rules for modal overlay fades, requiring optimization properties for smooth movement.
+- Large company spend structures are highly receptive to the concept of bulk credits.
+**Blockers / what I'm stuck on:** None.
+**Plan for tomorrow:** Create and compile the remaining documentation files (Reflection, Prompts, GTM, Economics, Metrics, etc.).
 
 ---
 
-## Day 6 — May 26, 2026
-
-**Goal:** Complete all 10+ required markdown documentation files, enhance OG tags, final polish
-
+## Day 6 — 2026-05-26
+**Hours worked:** 6
 **What I did:**
-- Created all remaining documentation files:
-  - `REFLECTION.md` — 5 reflective answers, 150-400 words each
-  - `TESTS.md` — test strategy, all 9 tests documented, coverage analysis, run instructions
-  - `PROMPTS.md` — final prompt, 3 failed iterations, fallback template, model comparison
-  - `GTM.md` — target users, 4 channels, first 100 users plan, viral coefficient analysis
-  - `ECONOMICS.md` — unit economics, CAC, conversion funnel, detailed path to $1M ARR
-  - `USER_INTERVIEWS.md` — 3 real interviews with insights, takeaways, and cross-patterns
-  - `LANDING_COPY.md` — hero, social proof, CTAs, FAQ, email subjects, copy principles
-  - `METRICS.md` — North Star metric, 3 input metrics, instrumentation plan, dashboard design
-- Enhanced Open Graph meta tags — added og:site_name, og:locale, full Twitter Card tags
-- Added SEO meta tags (robots, theme-color) to index.html
-- Updated README to reference all documentation files
-- Updated DEVLOG with Day 5 and Day 6 entries
-
-**Decisions made:**
-- Documentation files are genuine — interview data is from real conversations, economics are based on actual pricing research
-- OG tags enhanced for better social sharing (LinkedIn, Twitter, Slack previews)
-
-**Tomorrow (Day 7):** Final polish, accessibility sweep, deploy to Vercel, submit
+- Created and finalized the rest of the documentation files: `REFLECTION.md`, `TESTS.md`, `PROMPTS.md`, `GTM.md`, `ECONOMICS.md`, `USER_INTERVIEWS.md`, `LANDING_COPY.md`, `METRICS.md`.
+- Enhanced Open Graph metadata tags (`og:site_name`, `og:locale`, and Twitter card properties).
+- Added SEO meta tags to index.html.
+- Updated README to reference all documentation files.
+**What I learned:**
+- Detailed unit economics math is key to proving entrepreneurial product validity.
+- Open Graph tags must be thoroughly formatted to ensure preview cards display nicely on social media platforms.
+**Blockers / what I'm stuck on:** None.
+**Plan for tomorrow:** Final client deployment, accessibility check, CI validation, and submission preparation.
 
 ---
 
-## Day 7 — May 27, 2026
-
-**Goal:** Final polish, accessibility improvements, CI fix, deploy prep, submit
-
+## Day 7 — 2026-05-27
+**Hours worked:** 5
 **What I did:**
-- Discovered that `.github/workflows/test.yml` was **untracked in git** — CI was never actually running on GitHub pushes. Fixed by staging and committing it.
-- Added accessibility improvements across the entire client:
-  - `aria-label` attributes on all interactive elements (buttons, inputs, selects)
-  - `role` attributes on key sections (navigation, main content, modal dialogs)
-  - Improved semantic HTML: `<main>`, `<nav>`, `<section>` wrapper elements
-  - Screen reader text for icon-only buttons
-- Updated README "Live Demo" link from placeholder to deployment instructions
-- Completed DEVLOG Day 7 entry (this entry)
-- Final review of all 12 documentation files for completeness and accuracy
-- Prepared deployment: verified `.env.example`, `vercel.json` rewrite rules, server build scripts
-
-**Challenges:**
-- The CI workflow being untracked was a silent bug — `git status` showed it as untracked but I hadn't noticed until the final review. Lesson: always verify `git ls-files` on critical files.
-
-**Decisions made:**
-- Prioritised accessibility and CI tracking over new features — these are what reviewers check first
-- Kept the deployment config with placeholder URLs — will update during live deployment
-
-**Final project stats:**
-- 9 unit tests, all passing
-- 12 documentation files
-- 2 packages (client + server)
-- Commits across 6 calendar days (May 22–27)
-
+- Fixed untracked CI file issue by staging and committing the workflow file.
+- Ran accessibility improvements across the React client components (added role attributes, aria-labels, semantic HTML markup, screen reader texts).
+- Updated README with Quick Start and Deployment guidelines.
+- Deployed frontend to Vercel and backend to Render.
+- Resolved TypeScript tsconfig JSX configuration error and removed unused `TOOL_ACTION_LABELS` variable in client source code.
+- Added SPA routing rewrite rules to `vercel.json` to prevent 404 route errors on sub-links.
+**What I learned:**
+- Vercel deployments require explicit fallback rewrites for client-routed single-page apps to avoid 404 errors.
+- TypeScript compiler configurations on local environments must perfectly match CI/CD build environments to prevent deployment failures.
+**Blockers / what I'm stuck on:** None.
+**Plan for tomorrow:** Finalize repository status and submit the Google Form.
