@@ -3,7 +3,12 @@
     {
       "source": "/api/:path*",
       "destination": "https://spend-lens-server.onrender.com/api/:path*"
+    },
+    {
+      "source": "/((?!api|assets|favicon.ico).*)",
+      "destination": "/index.html"
     }
   ]
 }
+
 
