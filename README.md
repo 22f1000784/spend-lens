@@ -1,6 +1,6 @@
 # SpendLens — AI Spend Audit Tool
 
-> **Credex Web Dev Internship Assignment** — Built by [22f1000784](https://github.com/22f1000784)
+> **Credex Web Dev Internship Assignment** — Built by [Ayush Vats](https://github.com/22f1000784)
 
 A free web app that helps startup founders and engineering managers audit their AI tool spend, identify overspend, surface cheaper alternatives, and capture leads for Credex's discounted AI credits business.
 
