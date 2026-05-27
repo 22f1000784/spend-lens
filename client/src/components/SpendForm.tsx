@@ -83,8 +83,16 @@ export default function SpendForm({ formState, onChange }: Props) {
               type="number"
               min={1}
               max={500}
-              value={formState.teamSize}
-              onChange={e => updateField('teamSize', Math.max(1, Number(e.target.value)))}
+              value={formState.teamSize || ''}
+              onChange={e => {
+                const val = e.target.value;
+                updateField('teamSize', val === '' ? '' as any : Number(val));
+              }}
+              onBlur={() => {
+                if (!formState.teamSize || formState.teamSize < 1) {
+                  updateField('teamSize', 1);
+                }
+              }}
             />
           </div>
           <div>
@@ -149,8 +157,16 @@ export default function SpendForm({ formState, onChange }: Props) {
                     type="number"
                     min={1}
                     max={500}
-                    value={entry.seats}
-                    onChange={e => updateTool(index, 'seats', Math.max(1, Number(e.target.value)))}
+                    value={entry.seats || ''}
+                    onChange={e => {
+                      const val = e.target.value;
+                      updateTool(index, 'seats', val === '' ? '' as any : Number(val));
+                    }}
+                    onBlur={() => {
+                      if (!entry.seats || entry.seats < 1) {
+                        updateTool(index, 'seats', 1);
+                      }
+                    }}
                     placeholder="Seats"
                     title="Number of seats"
                   />
@@ -164,8 +180,11 @@ export default function SpendForm({ formState, onChange }: Props) {
                     <input
                       type="number"
                       min={0}
-                      value={entry.monthlySpend}
-                      onChange={e => updateTool(index, 'monthlySpend', Number(e.target.value))}
+                      value={entry.monthlySpend === 0 ? '' : entry.monthlySpend}
+                      onChange={e => {
+                        const val = e.target.value;
+                        updateTool(index, 'monthlySpend', val === '' ? 0 : Number(val));
+                      }}
                       style={{ paddingLeft: '24px' }}
                       placeholder="0"
                       title="Monthly spend in USD"
