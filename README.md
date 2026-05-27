@@ -10,6 +10,8 @@ A free web app that helps startup founders and engineering managers audit their 
 
 > [!NOTE]
 > **Render Free Tier Boot Delay:** The Express backend is hosted on Render's free plan. If the app has not been used recently, the backend server will be in a "sleep" state. **Please allow 15–30 seconds for the initial audit request to process** while the container wakes up. Subsequent requests will load instantly.
+>
+> **Resend Free Tier Email Limit:** Because the project uses the free version of Resend, the email sending feature is limited to sending reports only to a single verified email address (the account owner).
 
 ---
 
@@ -18,7 +20,7 @@ A free web app that helps startup founders and engineering managers audit their 
 - 🔍 **Instant AI Spend Audit** — Enter your tools, plans, and seats. Get results in seconds.
 - 🤖 **AI-Generated Summary** — Powered by Groq (Llama 3.1) with graceful fallback
 - 💾 **Shareable Audit URLs** — Every audit gets a unique UUID-based permalink
-- 📧 **Email Report** — Opt-in lead capture sends full report via Resend
+- 📧 **Email Report** — Opt-in lead capture sends full report via Resend *(Note: limited to a single verified email under the free tier)*
 - 🏆 **Credex CTA** — High-savings audits surface Credex's discounted AI credits offer
 - 📊 **8 AI Tools Supported** — Cursor, GitHub Copilot, Claude, ChatGPT, OpenAI API, Anthropic API, Gemini, Windsurf
 
