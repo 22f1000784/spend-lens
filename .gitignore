@@ -36,3 +36,7 @@ coverage/
 # Python test scripts (not part of production app)
 test_*.py
 list_models.py
+
+# Deployment info
+deployment_info.txt
+
