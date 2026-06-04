@@ -20,27 +20,39 @@ export interface AuditSummaryInput {
 
 const FALLBACK_SUMMARY = (data: AuditSummaryInput): string => {
   if (data.totalMonthlySavings === 0) {
-    return `Your AI tool spend looks well-optimised for a team of ${data.teamSize}. You're paying for what you use — no obvious waste detected. Keep reviewing quarterly as pricing changes.`;
+    const toolCount = data.results.length;
+    return `We analysed ${toolCount} AI tool${toolCount !== 1 ? 's' : ''} for your team of ${data.teamSize}. Your current setup appears reasonable — no clear cost-saving opportunities were identified at this time. That said, AI tool pricing changes frequently, so we recommend re-auditing quarterly. Consider whether all tools are actively used by your team.`;
   }
-  return `Your team of ${data.teamSize} could save $${data.totalMonthlySavings.toFixed(0)}/month ($${data.totalAnnualSavings.toFixed(0)}/year) on AI tools. The biggest opportunities are plan right-sizing and switching to cheaper alternatives for your ${data.useCase} workflows.`;
+  const savingsTools = data.results.filter(r => r.savings > 0);
+  const topSaver = savingsTools.sort((a, b) => b.savings - a.savings)[0];
+  return `Your team of ${data.teamSize} could save $${data.totalMonthlySavings.toFixed(0)}/month ($${data.totalAnnualSavings.toFixed(0)}/year) on AI tools. ${topSaver ? `The biggest opportunity is ${topSaver.tool} — ${topSaver.reason}` : 'The biggest opportunities are plan right-sizing and switching to cheaper alternatives.'} Review your ${data.useCase} workflows to maximise these savings.`;
 };
 
 export async function generateAuditSummary(data: AuditSummaryInput): Promise<string> {
   try {
     const toolBreakdown = data.results
       .filter(r => r.savings > 0)
-      .map(r => `- ${r.tool}: save $${r.savings}/mo — ${r.reason}`)
+      .map(r => `- ${r.tool}: save $${r.savings}/mo by ${r.recommendedAction === 'switch' ? 'switching' : r.recommendedAction === 'cancel' ? 'cancelling' : 'downgrading'} — ${r.reason}`)
       .join('\n');
 
-    const prompt = `You are an AI spend analyst. Write a concise, honest 80-100 word paragraph summarising this startup's AI tool audit. Be specific, use the numbers, and end with one actionable recommendation.
+    const keptTools = data.results
+      .filter(r => r.savings === 0)
+      .map(r => `- ${r.tool} (${r.recommendedAction}): ${r.reason}`)
+      .join('\n');
+
+    const prompt = `You are an AI spend analyst. Write a concise, direct 80-120 word paragraph summarising this startup's AI tool audit. Be specific, use the dollar amounts, and end with one actionable next step.
 
 Team size: ${data.teamSize}
 Primary use case: ${data.useCase}
 Total monthly savings identified: $${data.totalMonthlySavings.toFixed(2)}
 Total annual savings: $${data.totalAnnualSavings.toFixed(2)}
+Number of tools audited: ${data.results.length}
 
-Top savings opportunities:
-${toolBreakdown || 'No significant savings found — spend is already optimised.'}
+${toolBreakdown ? `Savings opportunities:\n${toolBreakdown}` : 'No savings opportunities found.'}
+
+${keptTools ? `Tools with no changes recommended:\n${keptTools}` : ''}
+
+Important: If savings were found, focus on those. If no savings were found, acknowledge it honestly but suggest re-auditing quarterly and checking if all tools are actively used. Do NOT say the spend is "optimised" unless there are genuinely no issues.
 
 Write the summary paragraph now (no bullet points, no headers):`;
 
